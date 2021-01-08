@@ -24,6 +24,10 @@ class player{ //class for player
         this.deck = []
         this.wins = 0
     }
+    resetScore() {
+        this.deck = []
+    }
+
     get score() { //gives him a player
         return this.deck.length
     }
@@ -49,13 +53,19 @@ function createDeck() {
     return deck
 }
 
+function newGame() {
+    deck = createDeck() //creates a deck
+    players[0].resetScore() //resets the score
+    players[1].resetScore()
+}
+
 let deck //deck array
 
 
 let players = [new player, new player] //adds the players for scores
 
 function game() {
-    deck = createDeck() //creates a deck
+    newGame() //creates a deck
     for (let i = 0; i < (suites.length * maxCardNumber); i += 2) { //checks who wins and adds the cards to their deck
         if (deck[i].beats(deck[i + 1])) {
             players[0].deck.push(deck[i], deck[i + 1])
