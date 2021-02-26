@@ -1,0 +1,36 @@
+* {
+    font-family: "Comic Sans MS";
+    background-color: #303030;
+}
+
+#content {
+    background-color: #202020;
+}
+h1 {
+   text-align: center;
+    font-size: 40px;
+    color: #4080FF;
+}
+
+#CanvasRoot {
+    width: 60%;
+    margin-left: 20%;
+    background-color: #101010;
+    height: 60%;
+}
+
+a {
+    color: #101010;
+    background-color: #4080FF;
+}
+
+#header {
+    background-color: #4080FF;
+    height: 5%
+}
+
+#hbox   {
+    margin-left: 15%;
+    margin-top: 1%;
+    background-color: #4080FF;
+}
