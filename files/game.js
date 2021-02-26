@@ -12,9 +12,16 @@ class card{
 
     beats(card = new card("red", 1)) { //checks if one card beats another
         if(this.suite === card.suite) {//if the colours are the same, check the numbers else
+//            //console.log(this.number > card.number)
             return (this.number > card.number)
         } else {//else checks the colours (checks if the other suite is one less than its own suite)
-            return ((this.suiteNumberID - 1) % 3 === card.suiteNumberID)
+            if ((this.suiteNumberID - 1) % 3 === card.suiteNumberID) {
+                player1WinsByColour++
+            } else {
+                player2WinsByColour++
+                console.log(this.suite + " vs " + card.suite)
+            }
+            return ((this.suiteNumberID + 2) % 3 === card.suiteNumberID)
         }
     }
 }
@@ -49,7 +56,6 @@ function createDeck() {
         }
     }
     shuffleArray(deck) //shuffles the deck
-    shuffleArray(deck)
     return deck
 }
 
@@ -60,7 +66,8 @@ function newGame() {
 }
 
 let deck //deck array
-
+let player1WinsByColour = 0
+let player2WinsByColour = 0
 
 let players = [new player, new player] //adds the players for scores
 
@@ -69,25 +76,25 @@ function game() {
     for (let i = 0; i < (suites.length * maxCardNumber); i += 2) { //checks who wins and adds the cards to their deck
         if (deck[i].beats(deck[i + 1])) {
             players[0].deck.push(deck[i], deck[i + 1])
+            players[0].wins++
         } else {
             players[1].deck.push(deck[i], deck[i + 1])
+            players[1].wins++
         }
     }
 
     if (players[0].score > players[1].score) {//outputs the winner and their deck
         console.log("Players 1 Wins with:")
         console.log(players[0].deck)
-        players[0].wins++
     } else {
         console.log("Players 2 Wins with:")
         console.log(players[1].deck)
-        players[1].wins++
     }
 }
 
-for (let i = 1; i < 1000; ++i) {
+/*for (let i = 1; i < 1000; ++i) {
     game()
-}
+}*/
 
 console.log(players[1].wins)
 console.log(players[0].wins)
